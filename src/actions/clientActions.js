@@ -2,20 +2,13 @@ import axios from 'axios';
 
 import {
   GET_VEHICLES,
-  GET_ERRORS,
   GET_BALANCE,
   UPDATE_BALANCE,
-  BALANCE_ERROR,
   GET_RENTAL_METHODS,
-  RENTAL_METHODS_ERROR,
   POST_CHECKIN,
-  POST_CHECKIN_ERROR,
   GET_CONSULT,
-  CONSULT_ERROR,
   PUT_CHECKOUT,
-  CHECKOUT_ERROR,
   PUT_PAYMENT,
-  PAYMENT_ERROR,
   GET_USER_NOTIFIED
 } from './types';
 
@@ -32,12 +25,24 @@ export const getVehicles = () => {
         });
       })
 
-      .catch(err =>
-        dispatch({
-          type: GET_ERRORS,
-          payload: err
-        })
-      );
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
   };
 };
 
@@ -54,12 +59,24 @@ export const getRentalMethods = () => {
         });
       })
 
-      .catch(err =>
-        dispatch({
-          type: RENTAL_METHODS_ERROR,
-          payload: err
-        })
-      );
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
   };
 };
 
@@ -75,12 +92,24 @@ export const getBalance = id => {
           payload: balance.data
         });
       })
-      .catch(err =>
-        dispatch({
-          type: BALANCE_ERROR,
-          payload: err
-        })
-      );
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
   };
 };
 
@@ -96,12 +125,24 @@ export const updateBalance = (id, balance) => {
           payload: updateBalance
         });
       })
-      .catch(err =>
-        dispatch({
-          type: BALANCE_ERROR,
-          payload: err
-        })
-      );
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
   };
 };
 
@@ -115,12 +156,24 @@ export const postCheckIn = (user, id, rentalMethod, lat, lon) => {
       .then(checkin => {
         return dispatch({ type: POST_CHECKIN, payload: checkin.data });
       })
-      .catch(err =>
-        dispatch({
-          type: POST_CHECKIN_ERROR,
-          payload: err
-        })
-      );
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
   };
 };
 
@@ -137,12 +190,24 @@ export const getConsult = id => {
           payload: consult.data
         });
       })
-      .catch(err =>
-        dispatch({
-          type: CONSULT_ERROR,
-          payload: err
-        })
-      );
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
   };
 };
 
@@ -159,12 +224,24 @@ export const updateCheckout = (id, vehicle, lat, lon, address) => {
           payload: checkout.data
         });
       })
-      .catch(err =>
-        dispatch({
-          type: CHECKOUT_ERROR,
-          payload: err
-        })
-      );
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
   };
 };
 
@@ -181,12 +258,24 @@ export const updatePayment = id => {
           payload: payment.data
         });
       })
-      .catch(err =>
-        dispatch({
-          type: PAYMENT_ERROR,
-          payload: err
-        })
-      );
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
   };
 };
 
@@ -203,11 +292,23 @@ export const getNotifiedUser = id => {
           payload: notifiedUser.data
         });
       })
-      .catch(err =>
-        dispatch({
-          type: CONSULT_ERROR,
-          payload: err
-        })
-      );
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
   };
 };
