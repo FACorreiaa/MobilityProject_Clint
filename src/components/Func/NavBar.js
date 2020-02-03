@@ -8,14 +8,8 @@ import { logoutUser } from '../../actions/authActions';
 export class NavBar extends Component {
   onLogoutClick = e => {
     e.preventDefault();
+    console.log('this.props', this.props);
     this.props.logoutUser();
-    //this.props.history.push('/searchVehicles');
-    return (
-      <Redirect
-        to={'/searchVehicles'}
-        state={this.props.auth.isAuthenticated === false}
-      />
-    );
   };
 
   render() {
@@ -46,7 +40,9 @@ export class NavBar extends Component {
                   <Link to='/notifyUsers'>Notify Users</Link>
                 </li>
                 <li>
-                  <button onClick={this.onLogoutClick}>Logout</button>
+                  <Link to='/searchVehicles'>
+                    <button onClick={this.onLogoutClick}>Logout</button>
+                  </Link>
                 </li>
               </ul>
               <ul className='right'>
@@ -67,9 +63,11 @@ export class NavBar extends Component {
 
 NavBar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  history: state.history
 });
 export default connect(mapStateToProps, { logoutUser })(NavBar);

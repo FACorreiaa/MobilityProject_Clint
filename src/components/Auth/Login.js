@@ -18,7 +18,7 @@ class Login extends Component {
   //admin
   componentDidMount() {
     /* if (!this.props.auth.isAuthenticated) {
-      this.props.history.push('/searchVehicles');
+      this.props.history.push('/');
     } */
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
@@ -41,9 +41,9 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    /* if (!nextProps.auth.isAuthenticated) {
-      this.props.history.push('/places');
-    } */
+    if (!nextProps.auth.isAuthenticated) {
+      this.props.history.push('/');
+    }
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/main'); // push user to dashboard when they login
     }

@@ -166,7 +166,7 @@ class Checkin extends Component {
               </p>
               <div className='col s6'>
                 <Dropdown
-                  options={getAvailables.map(available => available._id)}
+                  options={getAvailables.map((available, key) => available._id)}
                   onChange={this._onSelect}
                   value={defaultVehicleOption}
                   placeholder='Select an option'

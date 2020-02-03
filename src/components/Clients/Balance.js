@@ -87,7 +87,6 @@ class Balance extends Component {
       <>
         <ClientNav />
         <div style={{ textAlign: 'center' }}>
-          <h4>Hello {user.username}!</h4>
           <p className='flow-text grey-text text-darken-1'>
             Your Balance is {balance.balance}€
           </p>

@@ -11,9 +11,6 @@ const PrivateRoute = ({
 }) => {
   // check the route's roles to see if any match a role the user has
   const hasRole = roles.some(role => userRoles.includes(role));
-  {
-    console.log('ROLES' + userRoles);
-  }
 
   return (
     <Route
@@ -22,7 +19,7 @@ const PrivateRoute = ({
         auth.isAuthenticated === true && hasRole ? (
           <Component {...props} />
         ) : (
-          <Redirect to='/searchVehicles' />
+          <Redirect to='/' />
         )
       }
     />

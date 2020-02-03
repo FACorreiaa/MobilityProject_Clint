@@ -1,12 +1,8 @@
-import Navbar from '../Navbar/Navbar';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
-import PrivateRoute from './PrivateRoute';
 import Charts from '../Dashboard/Charts';
-import Places from '../Places/Places';
 import Clients from '../Clients/Clients';
 import SearchVehicles from '../Clients/SearchVehicles';
-import Profile from '../Clients/Profile';
 import Balance from '../Clients/Balance';
 import CheckIn from '../Clients/Checkin';
 import Checkout from '../Clients/Checkout';
@@ -50,17 +46,17 @@ export default {
     {
       component: Balance,
       url: '/balance',
-      roles: []
+      roles: ['client']
     },
     {
       component: CheckIn,
       url: '/checkin',
-      roles: []
+      roles: ['client']
     },
     {
       component: Checkout,
       url: '/checkout',
-      roles: []
+      roles: ['client']
     },
     {
       component: Login,
@@ -70,7 +66,7 @@ export default {
     {
       component: SearchVehicles,
       url: '/searchVehicles',
-      roles: []
+      roles: ['client']
     },
     {
       component: SearchVehicles,

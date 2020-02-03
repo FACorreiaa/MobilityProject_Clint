@@ -7,9 +7,9 @@ import { logoutUser } from '../../actions/authActions';
 
 export class ClientNav extends Component {
   onLogoutClick = e => {
+    console.log('this', this.props);
     e.preventDefault();
-    this.props.logoutUser();
-    return <Redirect to='/searchVehicles' />;
+    return <Redirect to='/searchVehicles'>{this.props.logoutUser()} </Redirect>;
   };
 
   render() {
