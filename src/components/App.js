@@ -6,21 +6,8 @@ import { setCurrentUser, logoutUser } from '../actions/authActions';
 import { Provider } from 'react-redux';
 import store from '../store';
 import Navbar from '../components/Navbar/Navbar';
-import Register from '../components/Auth/Register';
-import Login from '../components/Auth/Login';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
-import Charts from '../components/Dashboard/Charts';
-import Places from '../components/Places/Places';
-import Clients from '../components/Clients/Clients';
-import SearchVehicles from '../components/Clients/SearchVehicles';
-import Profile from '../components/Clients/Profile';
-import Balance from '../components/Clients/Balance';
-import CheckIn from '../components/Clients/Checkin';
-import Checkout from '../components/Clients/Checkout';
-import ValidateUsers from './Admin/ValidateUsers';
-import CheckParkingData from './Admin/CheckParkingData';
-import MapParkings from './Admin/MapParkings';
-import NotifyUsers from './Func/NotifyUsers';
+
 import routesConfig from './PrivateRoute/routesConfig';
 
 if (localStorage.jwtToken) {
