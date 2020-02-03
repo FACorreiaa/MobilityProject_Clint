@@ -15,9 +15,7 @@ import {
 export const getVehicles = () => {
   return dispatch => {
     return axios
-      .get(
-        `${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/v1/vehicles`
-      )
+      .get(`${process.env.REACT_APP_HOST}/api/v1/vehicles`)
       .then(vehicles => {
         return dispatch({
           type: GET_VEHICLES,
@@ -49,9 +47,7 @@ export const getVehicles = () => {
 export const getRentalMethods = () => {
   return dispatch => {
     return axios
-      .get(
-        `${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/v1/rental/rentalMethods`
-      )
+      .get(`${process.env.REACT_APP_HOST}/api/v1/rental/rentalMethods`)
       .then(methods => {
         return dispatch({
           type: GET_RENTAL_METHODS,
@@ -83,9 +79,7 @@ export const getRentalMethods = () => {
 export const getBalance = id => {
   return dispatch => {
     return axios
-      .get(
-        `${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/v1/users/${id}/balance`
-      )
+      .get(`${process.env.REACT_APP_HOST}/api/v1/users/${id}/balance`)
       .then(balance => {
         return dispatch({
           type: GET_BALANCE,
@@ -117,7 +111,7 @@ export const updateBalance = (id, balance) => {
   return dispatch => {
     return axios
       .put(
-        `${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/v1/users/${id}/balance/${balance}`
+        `${process.env.REACT_APP_HOST}/api/v1/users/${id}/balance/${balance}`
       )
       .then(updateBalance => {
         return dispatch({
@@ -151,7 +145,7 @@ export const postCheckIn = (user, id, rentalMethod, lat, lon) => {
   return dispatch => {
     return axios
       .post(
-        `${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/v1/rental/checkin/user/${user}/vehicle/${id}/${rentalMethod}/lat/${lat}/lon/${lon}`
+        `${process.env.REACT_APP_HOST}/api/v1/rental/checkin/user/${user}/vehicle/${id}/${rentalMethod}/lat/${lat}/lon/${lon}`
       )
       .then(checkin => {
         return dispatch({ type: POST_CHECKIN, payload: checkin.data });
@@ -181,9 +175,7 @@ export const postCheckIn = (user, id, rentalMethod, lat, lon) => {
 export const getConsult = id => {
   return dispatch => {
     return axios
-      .get(
-        `${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/v1/rental/consult/${id}`
-      )
+      .get(`${process.env.REACT_APP_HOST}/api/v1/rental/consult/${id}`)
       .then(consult => {
         return dispatch({
           type: GET_CONSULT,
@@ -216,7 +208,7 @@ export const updateCheckout = (id, vehicle, lat, lon, address) => {
   return dispatch => {
     return axios
       .put(
-        `${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/v1/rental/checkout/${id}/vehicle/${vehicle}/lat/${lat}/lon/${lon}/address/${address}`
+        `${process.env.REACT_APP_HOST}/api/v1/rental/checkout/${id}/vehicle/${vehicle}/lat/${lat}/lon/${lon}/address/${address}`
       )
       .then(checkout => {
         return dispatch({
@@ -249,9 +241,7 @@ export const updateCheckout = (id, vehicle, lat, lon, address) => {
 export const updatePayment = id => {
   return dispatch => {
     return axios
-      .put(
-        `${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/v1/rental/payment/${id}`
-      )
+      .put(`${process.env.REACT_APP_HOST}/api/v1/rental/payment/${id}`)
       .then(payment => {
         return dispatch({
           type: PUT_PAYMENT,
@@ -283,9 +273,7 @@ export const updatePayment = id => {
 export const getNotifiedUser = id => {
   return dispatch => {
     return axios
-      .get(
-        `${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/v1/users/${id}`
-      )
+      .get(`${process.env.REACT_APP_HOST}/api/v1/users/${id}`)
       .then(notifiedUser => {
         return dispatch({
           type: GET_USER_NOTIFIED,
