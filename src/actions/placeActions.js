@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { GET_PLACES, PLACES_LOADING } from './types';
-let apiUrl = `${process.env.REACT_APP_HOST}/api/v1/place`;
+let apiUrl = `/${process.env.REACT_APP_HOST}/api/v1/place`;
 
 export const getPlaces = () => {
   return dispatch => {
