@@ -49,8 +49,7 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "netlify": "npm run build && netlify deploy",
-    "commit": "sudo git add . && npx git-cz && sudo git push origin master",
-    "deploy": "gh-pages -d build"
+    "commit": "sudo git add . && npx git-cz && sudo git push origin master"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -71,6 +70,5 @@
     "autoprefixer": "^9.7.4",
     "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.1.4"
-  },
-  "homepage": "http://Knox316.github.io/MobilityCities"
+  }
 }
