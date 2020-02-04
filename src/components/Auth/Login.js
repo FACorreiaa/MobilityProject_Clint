@@ -76,6 +76,11 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     };
+    if (
+      !this.props.auth.user.isAuthenticated &&
+      this.props.auth.user.role == 'client'
+    )
+      return false;
 
     this.props.loginUser(userData);
     //
