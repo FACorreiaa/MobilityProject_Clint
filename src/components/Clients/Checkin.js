@@ -19,6 +19,11 @@ import 'react-notifications-component/dist/theme.css';
 import { store } from 'react-notifications-component';
 import '@material/react-snackbar/dist/snackbar.css';
 import { Snackbar } from '@material/react-snackbar';
+import { dropdown } from './utils/dropdown';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 
 //const options = ['one', 'two', 'three'];
 //const rental = ['minutes', 'pack'];
@@ -79,28 +84,36 @@ class Checkin extends Component {
       timeSpent: '',
       canRender: false
     };
-    this._onSelect = this._onSelect.bind(this);
-    this._onMethodSelect = this._onMethodSelect.bind(this);
   }
 
-  _onSelect(option) {
-    this.setState({ vehicle: option });
-  }
+  _onSelect = e => {
+    let value = e.target.value;
+    this.setState({ vehicle: value }, () => {
+      console.log(this.state.vehicle, 'vehicle');
+    });
+    return value.description;
+  };
 
-  _onMethodSelect(value) {
-    this.setState({ rentalMethod: value });
-  }
+  _onMethodSelect = e => {
+    let value = e.target.value;
+    console.log(value);
+    this.setState({ rentalMethod: value }, () => {
+      console.log(this.state.rentalMethod, 'rentalMethod');
+    });
+    return value;
+  };
 
   onSubmit = e => {
     e.preventDefault();
 
     const checkin = {
       user: this.props.auth.user._id,
-      id: this.state.vehicle.value,
-      rentalMethod: this.state.rentalMethod.value,
+      id: this.state.vehicle._id,
+      rentalMethod: this.state.rentalMethod,
       lat: JSON.stringify(this.state.lat),
       lon: JSON.stringify(this.state.lon)
     };
+    console.log(checkin);
 
     this.props.postCheckIn(
       checkin.user,
@@ -135,26 +148,35 @@ class Checkin extends Component {
     const { vehicles } = this.props.clients;
     const { methods } = this.props.clients;
     const rental = methods;
-    const getAvailables = vehicles.filter(
+    /*const getAvailables = vehicles.filter(
       vechicle => vechicle.available === true
-    );
+    );*/
+    let reduced = vehicles.reduce(function(filtered, option) {
+      if (option.available) {
+        let someNewValue = { _id: option._id, description: option.description };
+        filtered.push(someNewValue);
+      }
+      return filtered;
+    }, []);
 
-    const defaultVehicleOption = this.state.vehicle;
-    const defaultMethodOption = this.state.rentalMethod;
+    //const defaultVehicleOption = this.state.vehicle;
+    //const defaultMethodOption = this.state.rentalMethod;
 
-    const placeHolderVehicleValue =
+    /* const placeHolderVehicleValue =
       typeof this.state.vehicle === 'string'
         ? this.state.vehicle
-        : this.state.vehicle.label;
+        : this.state.vehicle.label; */
 
-    const placeHolderRentalValue =
+    //const placeHolderVehicle = this.state.vehicle;
+
+    /* const placeHolderRentalValue =
       typeof this.state.rentalMethod === 'string'
         ? this.state.rentalMethod
-        : this.state.rentalMethod.label;
+        : this.state.rentalMethod.label; */
     return (
       <>
         <ClientNav />
-        <div style={{ textAlign: 'center' }}>
+        <div className='container' style={{ textAlign: 'center' }}>
           <p className='flow-text grey-text text-darken-1'>
             Hello {user.username}! Checkin with us now!
           </p>
@@ -165,17 +187,37 @@ class Checkin extends Component {
                 Pick your Vehicle
               </p>
               <div className='col s6'>
-                <Dropdown
+                {/* <Dropdown
                   options={getAvailables.map((available, key) => available._id)}
                   onChange={this._onSelect}
                   value={defaultVehicleOption}
                   placeholder='Select an option'
                   disabled={this.state.disabled}
-                />
+                /> */}
+                <Select
+                  value={this.state.vehicle}
+                  onChange={e => this._onSelect(e)}
+                  input={
+                    <Input name='vehicle' id='vehicle-label-placeholder' />
+                  }
+                  displayEmpty
+                  name='vehicle'
+                  className={dropdown.selectEmpty}
+                >
+                  <MenuItem value={this.state.vehicle}>
+                    <em>Choose Your Vehicle</em>{' '}
+                  </MenuItem>{' '}
+                  {reduced.map((item, key) => (
+                    <MenuItem value={item} key={key} name='vehicle'>
+                      {' '}
+                      {item.description}{' '}
+                    </MenuItem>
+                  ))}{' '}
+                </Select>{' '}
               </div>
               <div className='col s6 result'>
-                Your vehicle
-                <strong> {placeHolderVehicleValue} </strong>
+                Your vehicle is
+                <strong> {this.state.vehicle.description} </strong>
               </div>
             </section>
           </div>
@@ -185,17 +227,35 @@ class Checkin extends Component {
                 Pick your rental method
               </h5>
               <div className='col s6'>
-                <Dropdown
+                {/* <Dropdown
                   options={rental}
                   onChange={this._onMethodSelect}
                   value={defaultMethodOption}
                   placeholder='Select an option'
                   disabled={this.state.disabled}
-                />
+                /> */}
+                <Select
+                  value={this.state.rentalMethod}
+                  onChange={e => this._onMethodSelect(e)}
+                  input={<Input name='vehicle' id='method-label-placeholder' />}
+                  displayEmpty
+                  name='vehicle'
+                  className={dropdown.selectEmpty}
+                >
+                  <MenuItem value={this.state.rentalMethod}>
+                    <em>Choose your rental Method </em>{' '}
+                  </MenuItem>{' '}
+                  {this.props.clients.methods.map((item, key) => (
+                    <MenuItem value={item} key={key} name='methods'>
+                      {' '}
+                      {item}{' '}
+                    </MenuItem>
+                  ))}{' '}
+                </Select>{' '}
               </div>
               <div className='result col s6'>
-                Your Rental Method
-                <strong> {placeHolderRentalValue} </strong>
+                Your Rental Method is
+                <strong> {this.state.rentalMethod} </strong>
               </div>
             </section>
           </div>
