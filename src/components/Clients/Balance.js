@@ -80,7 +80,6 @@ class Balance extends Component {
   };
 
   render() {
-    const { user } = this.props.auth;
     const { balance } = this.props.clients;
 
     return (

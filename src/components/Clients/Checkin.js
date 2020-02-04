@@ -10,7 +10,6 @@ import {
   getConsult,
   getNotifiedUser
 } from '../../actions/clientActions';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import ClientNav from './ClientNav';
 import { Button, Icon } from 'react-materialize';
@@ -22,7 +21,6 @@ import { Snackbar } from '@material/react-snackbar';
 import { dropdown } from './utils/dropdown';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 
 //const options = ['one', 'two', 'three'];
@@ -140,7 +138,6 @@ class Checkin extends Component {
   render() {
     const { user } = this.props.auth;
     const { vehicles } = this.props.clients;
-    const { methods } = this.props.clients;
 
     let reduced = vehicles.reduce(function(filtered, option) {
       if (option.available) {
