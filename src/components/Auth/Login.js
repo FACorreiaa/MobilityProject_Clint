@@ -17,9 +17,12 @@ class Login extends Component {
   //employee
   //admin
   componentDidMount() {
-    /* if (!this.props.auth.isAuthenticated) {
+    if (
+      !this.props.auth.isAuthenticated &&
+      this.props.auth.user.role === 'client'
+    ) {
       this.props.history.push('/');
-    } */
+    }
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/searchVehicles');
@@ -41,7 +44,10 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.auth.isAuthenticated) {
+    if (
+      !this.props.auth.isAuthenticated &&
+      this.props.auth.user.role === 'client'
+    ) {
       this.props.history.push('/');
     }
     if (nextProps.auth.isAuthenticated) {
@@ -72,15 +78,13 @@ class Login extends Component {
   onSubmit = e => {
     let { from } = this.props.location.state || { from: { pathname: '/' } };
     e.preventDefault();
+
     const userData = {
       username: this.state.username,
       password: this.state.password
     };
-    if (
-      !this.props.auth.user.isAuthenticated &&
-      this.props.auth.user.role == 'client'
-    )
-      return false;
+
+    console.log(this.props);
 
     this.props.loginUser(userData);
     //

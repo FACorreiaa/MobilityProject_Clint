@@ -24,8 +24,8 @@ class Checkout extends Component {
     super(props);
     this.state = {
       address: '',
-      lat: '',
-      lng: '',
+      lat: 41.5311338460033,
+      lng: -8.61901849508286,
       value: '',
       canRender: false,
       checkout: false,
