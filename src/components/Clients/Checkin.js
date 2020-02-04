@@ -147,10 +147,7 @@ class Checkin extends Component {
     const { user } = this.props.auth;
     const { vehicles } = this.props.clients;
     const { methods } = this.props.clients;
-    const rental = methods;
-    /*const getAvailables = vehicles.filter(
-      vechicle => vechicle.available === true
-    );*/
+
     let reduced = vehicles.reduce(function(filtered, option) {
       if (option.available) {
         let someNewValue = { _id: option._id, description: option.description };
@@ -159,20 +156,6 @@ class Checkin extends Component {
       return filtered;
     }, []);
 
-    //const defaultVehicleOption = this.state.vehicle;
-    //const defaultMethodOption = this.state.rentalMethod;
-
-    /* const placeHolderVehicleValue =
-      typeof this.state.vehicle === 'string'
-        ? this.state.vehicle
-        : this.state.vehicle.label; */
-
-    //const placeHolderVehicle = this.state.vehicle;
-
-    /* const placeHolderRentalValue =
-      typeof this.state.rentalMethod === 'string'
-        ? this.state.rentalMethod
-        : this.state.rentalMethod.label; */
     return (
       <>
         <ClientNav />
@@ -187,13 +170,6 @@ class Checkin extends Component {
                 Pick your Vehicle
               </p>
               <div className='col s6'>
-                {/* <Dropdown
-                  options={getAvailables.map((available, key) => available._id)}
-                  onChange={this._onSelect}
-                  value={defaultVehicleOption}
-                  placeholder='Select an option'
-                  disabled={this.state.disabled}
-                /> */}
                 <Select
                   value={this.state.vehicle}
                   onChange={e => this._onSelect(e)}
@@ -227,13 +203,6 @@ class Checkin extends Component {
                 Pick your rental method
               </h5>
               <div className='col s6'>
-                {/* <Dropdown
-                  options={rental}
-                  onChange={this._onMethodSelect}
-                  value={defaultMethodOption}
-                  placeholder='Select an option'
-                  disabled={this.state.disabled}
-                /> */}
                 <Select
                   value={this.state.rentalMethod}
                   onChange={e => this._onMethodSelect(e)}
