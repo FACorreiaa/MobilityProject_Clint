@@ -8,7 +8,6 @@ import { logoutUser } from '../../actions/authActions';
 export class NavBar extends Component {
   onLogoutClick = e => {
     e.preventDefault();
-    console.log('this.props', this.props);
     this.props.logoutUser();
   };
 

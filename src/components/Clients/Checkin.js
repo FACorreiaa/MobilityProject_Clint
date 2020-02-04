@@ -88,18 +88,13 @@ class Checkin extends Component {
 
   _onSelect = e => {
     let value = e.target.value;
-    this.setState({ vehicle: value }, () => {
-      console.log(this.state.vehicle, 'vehicle');
-    });
+    this.setState({ vehicle: value }, () => {});
     return value.description;
   };
 
   _onMethodSelect = e => {
     let value = e.target.value;
-    console.log(value);
-    this.setState({ rentalMethod: value }, () => {
-      console.log(this.state.rentalMethod, 'rentalMethod');
-    });
+    this.setState({ rentalMethod: value }, () => {});
     return value;
   };
 
@@ -113,7 +108,6 @@ class Checkin extends Component {
       lat: JSON.stringify(this.state.lat),
       lon: JSON.stringify(this.state.lon)
     };
-    console.log(checkin);
 
     this.props.postCheckIn(
       checkin.user,

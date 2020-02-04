@@ -84,10 +84,8 @@ class Login extends Component {
       password: this.state.password
     };
 
-    console.log(this.props);
-
     this.props.loginUser(userData);
-    //
+
     if (this.props.auth.user.role === 'client') {
       this.props.history.replace(from);
     }
