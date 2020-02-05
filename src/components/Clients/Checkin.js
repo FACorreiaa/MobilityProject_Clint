@@ -10,7 +10,6 @@ import {
   getConsult,
   getNotifiedUser
 } from '../../actions/clientActions';
-import 'react-dropdown/style.css';
 import ClientNav from './ClientNav';
 import { Button, Icon } from 'react-materialize';
 import ReactNotification from 'react-notifications-component';
